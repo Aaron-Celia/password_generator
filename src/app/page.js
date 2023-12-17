@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <Container className='h-screen text-center' sx={centerSx}>
-      <Typography className='my-10' variant='h4'>Password-Generating Algorithm</Typography>
+      <Typography id="title" className='my-10' variant='h4'>Password-Generating Algorithm</Typography>
       <Stack sx={centerSx}>
         <Typography>Password Length</Typography>
         <Typography>{desiredLength}</Typography>
@@ -74,8 +74,8 @@ export default function Home() {
         <code className="my-10 bg-green-800 p-5 rounded-xl">
           <>{password.length ? password : errorMsg}</>
         </code>
-        <Button variant="outlined" className="my-10" color={generated ? "success" : "primary"} onClick={() => generate()}>Generate</Button>
-        <Button variant="outlined" className="my-10" color={copied ? "success" : "primary"} onClick={() => {
+        <Button id="button1" variant="outlined" className="my-10" color={generated ? "success" : "primary"} onClick={() => generate()}>Generate</Button>
+        <Button id="button2" variant="outlined" className="my-10" color={copied ? "success" : "primary"} onClick={() => {
           try{
             window.navigator.clipboard.writeText(`${password}`);
             setCopied(true)
