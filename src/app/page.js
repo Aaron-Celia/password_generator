@@ -1,6 +1,7 @@
 'use client';
+import axios from "axios";
 import { Alert, Button, Container, Slider, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [password, setPassword] = useState('password');
@@ -8,6 +9,26 @@ export default function Home() {
   const [generated, setGenerated] = useState(false);
   const [errorMsg, setErrorMessage] = useState('');
   const [copied, setCopied] = useState(false);
+  const [makeCall, setMakeCall] = useState(false)
+
+  const increasePageVisitCount = async () => {
+    await axios.get('https://api.api-ninjas.com/v1/counter?id=page_visits&hit=true', {
+      headers: {
+        'X-Api-Key': process.env.NEXT_PUBLIC_API_NINJAS_API_KEY,
+        'Content-Type': "application/json"
+      }
+    })
+    .then(res => {
+      console.log(res.data.value);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  useEffect(() => {
+      increasePageVisitCount();
+  }, []);
 
   let copiedTimeout = 3000; // milliseconds to show alert that they copied the message
   let generatedTimeout = 2000; // milliseconds to show different button
