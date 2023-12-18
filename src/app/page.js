@@ -9,7 +9,6 @@ export default function Home() {
   const [generated, setGenerated] = useState(false);
   const [errorMsg, setErrorMessage] = useState('');
   const [copied, setCopied] = useState(false);
-  const [makeCall, setMakeCall] = useState(false)
 
   const increasePageVisitCount = async () => {
     await axios.get('https://api.api-ninjas.com/v1/counter?id=page_visits&hit=true', {
@@ -31,7 +30,7 @@ export default function Home() {
   }, []);
 
   let copiedTimeout = 3000; // milliseconds to show alert that they copied the message
-  let generatedTimeout = 2000; // milliseconds to show different button
+  let generatedTimeout = 3000; // milliseconds to show different button
 
   const generate = () => {
     const specialChars = '!@#$%^&*()';
