@@ -35,6 +35,7 @@ export default function Home() {
   const generate = () => {
     const specialChars = '!@#$%^&*()';
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    const capAlphabet = alphabet.toUpperCase();
     const nums = '1234567890';
 
     
@@ -45,7 +46,7 @@ export default function Home() {
     
     let password = [];
     
-    const charArrAll = [specialChars, alphabet, nums];
+    const charArrAll = [specialChars, alphabet, nums, capAlphabet];
 
     while(password.length < desiredLength) {
       // generate random number between 0 and 2 (2 inclusive)
